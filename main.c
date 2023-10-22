@@ -62,6 +62,9 @@ int main(int argc, char *argv[]) {
 
   char output_path_buffer[1024] = {0};
   get_output_path(output_path_buffer, 1024, path);
+
+  upscale_canvas(&canvas, 4);
+
   write_ppm_file(&canvas, output_path_buffer);
 
   free_canvas(&canvas);

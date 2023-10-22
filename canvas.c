@@ -1,8 +1,10 @@
 #include "canvas.h"
 #include "util.h"
+#include <stddef.h>
+#include <stdint.h>
 
 Canvas create_canvas(size_t width, size_t height) {
-  uint8_t *data = (uint8_t *)calloc(width * height, sizeof(uint8_t));
+  size_t *data = (size_t *)calloc(width * height, sizeof(size_t));
   Canvas out;
   out.data = data;
   out.width = width;
@@ -41,4 +43,28 @@ uint8_t max_canvas_value(const Canvas *canvas) {
     }
   }
   return max;
+}
+
+void upscale_canvas(Canvas *canvas, size_t factor) {
+  size_t new_width = canvas->width * factor;
+  size_t new_height = canvas->height * factor;
+  Canvas new_canvas = create_canvas(new_width, new_height);
+
+  for (size_t y = 0; y < canvas->height; y++) {
+    for (size_t x = 0; x < canvas->width; x++) {
+      size_t intensity = get_canvas_value(canvas, x, y);
+      for (size_t u = 0; u < factor; u++) {
+        for (size_t v = 0; v < factor; v++) {
+          set_canvas_value(&new_canvas, x * factor + u, y * factor + v,
+                           intensity);
+        }
+      }
+    }
+  }
+
+  free_canvas(canvas);
+
+  canvas->width = new_width;
+  canvas->height = new_height;
+  canvas->data = new_canvas.data;
 }

@@ -5,7 +5,7 @@
 #include <stdint.h>
 
 typedef struct {
-  uint8_t *data;
+  size_t *data;
   size_t width, height;
 } Canvas;
 
@@ -22,5 +22,7 @@ void set_canvas_value(Canvas *canvas, size_t x, size_t y, uint8_t intensity);
 void increment_canvas_value(Canvas *canvas, size_t x, size_t y);
 
 uint8_t max_canvas_value(const Canvas *canvas);
+
+void upscale_canvas(Canvas *canvas, size_t factor);
 
 #endif
