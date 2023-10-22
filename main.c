@@ -1,9 +1,4 @@
-#include <stdbool.h>
-#include <stddef.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include <math.h>
 
 #include "canvas.h"
 #include "util.h"
@@ -18,19 +13,10 @@ void process_file(const char *path, Canvas *canvas) {
   while (fread(pair, 1, 2, fp) == 2) {
     size_t x = pair[0];
     size_t y = pair[1];
-    increment_canvas_value(canvas, x, y);
+    increment_canvas_value(canvas, x, y, 20);
   }
 
   fclose(fp);
-
-  for (size_t y = 0; y < canvas->height; y++) {
-    for (size_t x = 0; x < canvas->width; x++) {
-      float normalized_value =
-          (float)get_canvas_value(canvas, x, y) / max_canvas_value(canvas);
-      uint8_t intensity_value = normalized_value * 255;
-      set_canvas_value(canvas, x, y, intensity_value);
-    }
-  }
 }
 
 void write_ppm_file(const Canvas *canvas, const char *path) {
@@ -42,7 +28,7 @@ void write_ppm_file(const Canvas *canvas, const char *path) {
   fprintf(fp, "P2\n%zu %zu\n255\n", canvas->width, canvas->height);
   for (size_t y = 0; y < canvas->height; y++) {
     for (size_t x = 0; x < canvas->width; x++) {
-      fprintf(fp, "%d ", get_canvas_value(canvas, x, y));
+      fprintf(fp, "%d ", (uint8_t)fmin(get_canvas_value(canvas, x, y), 256));
     }
     fprintf(fp, "\n");
   }

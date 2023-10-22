@@ -19,7 +19,8 @@ uint8_t get_canvas_value(const Canvas *canvas, size_t x, size_t y);
 
 void set_canvas_value(Canvas *canvas, size_t x, size_t y, uint8_t intensity);
 
-void increment_canvas_value(Canvas *canvas, size_t x, size_t y);
+void increment_canvas_value(Canvas *canvas, size_t x, size_t y,
+                            size_t increment);
 
 uint8_t max_canvas_value(const Canvas *canvas);
 

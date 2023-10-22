@@ -28,8 +28,9 @@ void set_canvas_value(Canvas *canvas, size_t x, size_t y, uint8_t intensity) {
   canvas->data[canvas_index(canvas, x, y)] = intensity;
 }
 
-void increment_canvas_value(Canvas *canvas, size_t x, size_t y) {
-  canvas->data[canvas_index(canvas, x, y)]++;
+void increment_canvas_value(Canvas *canvas, size_t x, size_t y,
+                            size_t increment) {
+  canvas->data[canvas_index(canvas, x, y)] += increment;
 }
 
 uint8_t max_canvas_value(const Canvas *canvas) {
