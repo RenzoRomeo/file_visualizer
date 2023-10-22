@@ -1,7 +1,11 @@
-# Fule content visualizer
+# File content visualizer
 
-## Considerations
+Small tool written in C that displays the contents of a file by taking each pair of consecutive bytes and interpreting them as coordinates on a 256x256 canvas. The intensity of each pixel is determined by the amount of times that specific pair of bytes appears in the file.
 
-- Output images in PPM format.
-- Interpret each pair of bytes as coordinates in a 256 by 256 grid.
-- The brightness of each dot indicates the frecuency of that given pair.
+## Usage
+
+```bash
+file_visualizer <file path>
+```
+
+## Example outputs
