@@ -18,7 +18,7 @@ file_visualizer <file path>
 
 The output will be saved inside the "output" directory as a PGM image (https://en.wikipedia.org/wiki/Netpbm) with the name of the file.
 
-## Example outputs
+## Example output
 
 ### "ls" executable (/bin/ls)
 ![Sin título](https://github.com/RenzoRomeo/file_visualizer/assets/46039237/d9196d6b-0050-456f-a414-b3ee05eee3e9)
