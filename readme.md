@@ -21,8 +21,5 @@ The output will be saved inside the "output" directory as a PGM image (https://e
 ## Example outputs
 
 ### "ls" executable (/bin/ls)
-![Sin título](https://github.com/RenzoRomeo/file_visualizer/assets/46039237/d57feac4-4d31-440e-abe1-66df0273d2dd)
+![Sin título](https://github.com/RenzoRomeo/file_visualizer/assets/46039237/d9196d6b-0050-456f-a414-b3ee05eee3e9)
 
-
-### "grep" executable (/bin/grep)
-![Sin título](https://github.com/RenzoRomeo/file_visualizer/assets/46039237/e2b8c6c1-f7fd-4b23-b59a-8d7fe71cbe1f)
